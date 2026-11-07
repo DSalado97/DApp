@@ -1,0 +1,13 @@
+node_modules
+dist
+dev-dist
+coverage
+test-results
+playwright-report
+*.local
+# Claves privadas del DJ (nunca al repositorio)
+secrets/
+*.pem
+*.dagekey.private
+# Manuales de origen: no se incluyen en el repositorio
+*.pdf
