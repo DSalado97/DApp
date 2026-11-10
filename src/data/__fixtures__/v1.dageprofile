@@ -1,0 +1,34 @@
+{
+  "format": "dageprofile",
+  "formatVersion": 1,
+  "schemaVersion": 1,
+  "exportedAt": "2026-11-07T10:00:00.000Z",
+  "app": "dragon-age-dm-station",
+  "deviceId": "fixture-device",
+  "profile": {
+    "id": "00000000000000000000000000000001",
+    "name": "Perfil de prueba",
+    "createdAt": "2026-11-01T09:00:00.000Z"
+  },
+  "revision": 4,
+  "modifiedAt": "2026-11-06T18:30:00.000Z",
+  "stores": {
+    "credentials": [
+      {
+        "ownerProfileId": "00000000000000000000000000000001",
+        "bytes": "AQID",
+        "installedAt": "2026-11-02T09:00:00.000Z"
+      }
+    ],
+    "settings": [
+      {
+        "ownerProfileId": "00000000000000000000000000000001",
+        "textScale": "large",
+        "backupReminderDays": 30,
+        "lastBackupAt": "2026-11-05T12:00:00.000Z"
+      }
+    ]
+  },
+  "assets": {},
+  "checksumSha256": "3967359326785fd808b4726412c02851a76a35146be7a774ee38fd629d0ee248"
+}

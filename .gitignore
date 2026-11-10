@@ -11,3 +11,6 @@ secrets/
 *.dagekey.private
 # Manuales de origen: no se incluyen en el repositorio
 *.pdf
+dist-e2e
+*.tsbuildinfo
+llaves/

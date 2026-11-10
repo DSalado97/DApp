@@ -1,0 +1,112 @@
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .tabs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 var(--space-3);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--tap-min);
+}
+
+.check input {
+  width: 24px;
+  height: 24px;
+  flex: none;
+}
+
+/* La etiqueta ocupa toda la fila: el objetivo táctil mide al menos 44 px. */
+.check label {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-height: var(--tap-min);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.output {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-2);
+  border-radius: var(--radius);
+}
+
+.dice {
+  display: inline-flex;
+  gap: var(--space-1);
+}
+
+.die {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 2px solid var(--color-border);
+  border-radius: 0.4rem;
+  background: var(--color-bg);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.dragon {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.note {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.progress {
+  width: 100%;
+  height: 1rem;
+}
+
+.history {
+  margin: 0 0 var(--space-3);
+  padding-left: var(--space-6);
+  color: var(--color-text-muted);
+}

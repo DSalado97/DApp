@@ -25,9 +25,17 @@ Prioridades: funcionamiento real, protección de datos, compatibilidad entre dis
 - Cada feature se registra con un `FeatureManifest` en `src/app/registry.ts`.
 - Importar archivos con `<input type="file">` sin filtrar extensión. No usar `crypto.randomUUID` (usar `crypto.getRandomValues`).
 - Modelo de combatiente: ficha derivada (PJ) vs literal (criaturas/PNJ del manual, nunca recalculada).
+- Datos: toda tabla Dexie se declara en `ownedStores` del manifiesto (clave primaria `ownerProfileId` o `[ownerProfileId+…]` con índice `ownerProfileId`); exportar, importar y borrar en cascada recorren el registro (`src/data/stores.ts`). Las escrituras pasan por un repositorio que llama a `touchProfile`. Cambio de modelo ⇒ `ModuleMigration` + golden fixture nuevo en `src/data/__fixtures__/`. Ver `docs/adr/0002-*.md`.
+- Rutas del DJ: declaran `requiredPermission`; los permisos se leen al renderizar (`core/permissions`). La clave privada vive en `secrets/` (gitignored); nunca la leas ni la imprimas.
+- Tests con IndexedDB: `fake-indexeddb` ya está en `test-setup.ts`; usa `openTestDb` de `src/data/testing.ts` y una base por test.
+- Contenido: cada registro con `id` estable, `source` y `audience`. El del DJ vive en `src/content/dm` y se carga solo con `loadDmContent()`; `content/player` no importa de `dm`. Los nombres son los del manual (los del compendio, como `aliases`). Valores de criaturas y PNJ: literales, nunca recalculados.
+- `rules/` no importa nada del proyecto; el RNG se inyecta (`Rng`). Las interpretaciones no oficiales van a `docs/RULES_GAPS.md`.
 
 ## Comandos
-`npm run dev` · `npm run check` (tipos+lint+test+build) · `npm run e2e` · `npm run icons`
+`npm run dev` · `npm run check` (tipos+lint+test+build) · `npm run content:narrative` (regenera la narrativa desde el compendio; solo si cambia él o su clasificación) · `npm run e2e` (requiere `npx playwright install chromium webkit`; build `--mode e2e` en `dist-e2e/`) · `npm run icons` · `npm run keygen -- <init|issue|verify>` (ver `tools/keygen/README.md`)
 
 ## Estado
-- Fase 1 (cimientos): hecha. Siguiente: Fase 2 (perfiles, datos y llave), solo con confirmación del usuario.
+- Fase 1 (cimientos): hecha.
+- Fase 2 (perfiles, datos y llave): hecha. Perfiles, registro de stores, `.dageprofile` con snapshots, ajustes, `.dagekey`, `tools/keygen`, permisos y layout DJ protegido.
+- Fase 3 (contenido y motor de reglas): hecha. `rules/` (motor puro con RNG inyectable), `content/` (catálogos Zod de jugador y DJ + narrativa generada), búsqueda MiniSearch, `rulebook`, `dice` y `compendium`. Ver `docs/adr/0003-*.md` y `docs/CONTENT_VERIFICATION.md`.
+- Siguiente: Fase 4 (Jugador), solo con confirmación del usuario.

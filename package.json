@@ -3,7 +3,10 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "engines": { "node": ">=24", "npm": ">=11" },
+  "engines": {
+    "node": ">=24",
+    "npm": ">=11"
+  },
   "scripts": {
     "dev": "vite --host",
     "build": "tsc -b && vite build",
@@ -13,10 +16,15 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "icons": "node scripts/make-icons.mjs",
-    "check": "npm run typecheck && npm run lint && npm run test && npm run build"
+    "keygen": "node tools/keygen/index.ts",
+    "build:e2e": "tsc -b && vite build --mode e2e --outDir dist-e2e",
+    "preview:e2e": "vite preview --port 4173 --outDir dist-e2e",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "content:narrative": "node tools/content/build-narrative.ts"
   },
   "dependencies": {
     "@noble/ed25519": "^3.2.0",
+    "@noble/hashes": "^2.4.0",
     "dexie": "^4.4.7",
     "minisearch": "^7.2.0",
     "react": "^19.3.1",
